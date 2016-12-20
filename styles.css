@@ -1,54 +1,121 @@
 a {
-  font-style: normal;
+  text-decoration: none;
+  color: white;
 }
 
 body, html{
-  height:100%;
+  height:auto;
+  width: 100%;
+  font-family: Helvetica, sans-serif;
 }
 body{
   margin: 0px;
-  background-image: url("assets/subway.jpg");
+  background: url(assets/subway.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   font-size: 18px;
 }
 
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
+}
+
+.dot {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  line-height: 25px;
+  color: white;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.green-dot {
+  background-color: green;
+}
+
+.blue-dot {
+  background-color: blue;
+}
+
+.red-dot {
+  background-color: red;
+}
+
+.purple-dot {
+  background-color: purple;
+}
+
+.yellow-dot {
+  background-color: orange;
+  color: black;
+}
+
+.dance-area {
+  height: 800px;
+  margin-top: 200px;
+}
+
+.orange-dot {
+  background-color: #ff6a00;
 }
 
 
-.title, .addDancerButton{
-  padding:5px 12px;
+.title, .addDancerButton, .btn{
+  padding:10px 17px;
   float:right;
-  border: 2px solid white;
-  border-radius: 8px;
+  border: 2px outset grey;
+  border-radius: 5px;
 }
 
-.addDancerButton{
+.addDancerButton, .btn{
   margin-right: 10px;
   background-color: black;
 }
 
-.addDancerButton:hover {
+.addDancerButton:hover, .btn:hover {
   background-color: #232323;
+}
+
+.btn {
+  float: left;
+}
+
+.btn:hover:active,
+.addDancerButton:hover:active {
+  border: 2px inset grey;
+}
+
+.ghost {
+  font-family: 'Amatica SC', Helvetica, sans-serif;
+  font-size: 25px;
+  padding: 2px 17px;
+}
+
+.lineUp {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .topbar{
   height:32px;
-  padding: 5px 10px 0 0;
+  padding: 5px 10px 0 10px;
 }
 .title{
   background-color: #777;
+}
+
+
+.dancer {
+  position:absolute;
+  width: 150px;
+  height: auto;
 }
 
 .blinky {
   border:20px solid red;
   border-radius:20px;
   position:absolute;
-}
-
-.dancer {
-  position:absolute;
-  width: 150px;
-  height: auto;
+  width: 0;
 }

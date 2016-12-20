@@ -23,18 +23,64 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random() * 0.8,
-      $('body').width() * Math.random() * 0.9,
+      $('.dance-area').height() * Math.random() * 0.8 + 45,
+      $('.dance-area').width() * Math.random() * 0.9 + 45,
       Math.random() * 1000
     );
+    //window.dancers.push(dancer);
+
     $('.dance-area').append(dancer.$node);
 
-    $('.dancer').on('click', function() {
-      $(this).css({'width': '+=15'});
+    $('.dancer:not(.carlton)').on('click', function() {
+      // $(this).css({'width': '+=15'});
+      $(this).remove();
+    });
+
+    $('.carlton').off().on('click', function() {
+      $(this).stop(true, true);
+      this.originalTop = $(this).css('top');
+      this.originalLeft = $(this).css('left');
+      $(this).animate({'top': '0px', 'left': '0px', 'width': '+=1900px'}, 2000);
+      //$(this).animate({'top': '0px', 'left': '0px'}, 300);
+      $(this).animate({'top': this.originalTop, 'left': this.originalLeft, 'width': '-=1900px'}, 300);
     });
 
   });
 
+  $('.title').on('click', function() {
+    $('.dancer').remove();
+  });
+
+  // $('.ghost').on('click', function() {
+  //   $('.dancer').animate({
+  //     opacity: '0.5'
+  //   });
+  // });
+
+  $('.ghost').on('click', function() {
+    $('.dancer').stop(true, true);
+    $('.dancer').animate({opacity: 0}, 3000);
+    $('.dancer').animate({opacity: 1}, 500);
+  });
+  
+  // Line up code
+
+  $('.lineUp').on('click', function() {
+    // $('.dancer').animate({'top': '600px'}, 500);
+    
+    var totalWidth = parseInt($('body').css('width'));
+    var spacing = totalWidth / ($('.dance-area .dancer').length + 1);
+
+    // Iterate through dancers, applying a width
+    $('.dancer').each(function(index) {
+      $(this).stop(true, true);
+      var fromLeft = (spacing * (index + 1)) + 'px';
+      console.log(fromLeft, totalWidth);
+      $(this).animate({'top': '600px', 'left': fromLeft}, 500);
+    });
+
+
+  });
 
 });
 
