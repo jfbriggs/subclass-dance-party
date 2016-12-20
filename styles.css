@@ -3,8 +3,11 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url("http://www.3dtotal.com/admin/new_cropper/gallery_originals/2010-04-13(57020)_sc4station.jpg");
+  background-size: cover;
   font-size: 18px;
+  width: 90%;
+  height: 75%;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -20,8 +23,21 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
-.dancer{
-  border:10px solid red;
-  border-radius:10px;
+
+.blinky {
+  border:20px solid red;
+  border-radius:20px;
   position:absolute;
+}
+
+.carlton {
+  position:absolute;
+  width: 150px;
+  height: auto;
+}
+
+.russian {
+  position:absolute;
+  width: 150px;
+  height: auto;
 }
