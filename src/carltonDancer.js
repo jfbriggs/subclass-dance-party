@@ -5,7 +5,7 @@ var makeCarltonDancer = function(top, left, timeBetweenSteps) {
   this.delay = timeBetweenSteps;
 
   this.$node.addClass('carlton');
-  this.$node.attr('src', 'https://68.media.tumblr.com/504cb94fe0f41e563f435ee2f833dcb5/tumblr_n47d7f7uFv1rt5pgzo1_400.gif');
+  this.$node.attr('src', 'assets/carlton.gif');
 
 };
 

@@ -1,24 +1,41 @@
+a {
+  font-style: normal;
+}
+
 body, html{
   height:100%;
 }
 body{
   margin: 0px;
-  background-image: url("http://www.3dtotal.com/admin/new_cropper/gallery_originals/2010-04-13(57020)_sc4station.jpg");
+  background-image: url("assets/subway.jpg");
   background-size: cover;
   font-size: 18px;
-  width: 90%;
-  height: 75%;
 }
+
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
+
+
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  border: 2px solid white;
+  border-radius: 8px;
 }
+
+.addDancerButton{
+  margin-right: 10px;
+  background-color: black;
+}
+
+.addDancerButton:hover {
+  background-color: #232323;
+}
+
 .topbar{
   height:32px;
-  background-color: #555;
+  padding: 5px 10px 0 0;
 }
 .title{
   background-color: #777;
@@ -30,13 +47,7 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
-.carlton {
-  position:absolute;
-  width: 150px;
-  height: auto;
-}
-
-.russian {
+.dancer {
   position:absolute;
   width: 150px;
   height: auto;
