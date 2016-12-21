@@ -84,5 +84,9 @@ $(document).ready(function() {
 
   });
 
+  $('.title').on('click', function() {
+    $(this).firstChild.play();
+  });
+
 });
 
