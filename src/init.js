@@ -85,7 +85,8 @@ $(document).ready(function() {
   });
 
   $('.title').on('click', function() {
-    $(this).firstChild.play();
+    $('audio').play();
+    console.log('Playing the Carlton song!');
   });
 
 });
