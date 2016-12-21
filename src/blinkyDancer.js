@@ -1,10 +1,11 @@
 var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
-
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  this.radius = 50;
+  this.delay = timeBetweenSteps / 5;
+  this.ghettoTimer = 0;
+  makeDancer.call(this, top, left, this.delay);
 
   this.$node.addClass('blinky');
 
-  this.delay = timeBetweenSteps;
 
 };
 
@@ -18,4 +19,13 @@ makeBlinkyDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   this.$node.toggle();
+  this.circleMove();
+};
+
+makeBlinkyDancer.prototype.circleMove = function(i) {
+  this.ghettoTimer += 0.3;
+  var newLeft = Math.floor(this.left + (this.radius * Math.cos(this.ghettoTimer)));
+  var newTop = Math.floor(this.top + (this.radius * Math.sin(this.ghettoTimer)));
+  this.setPosition(newTop, newLeft);
+  //this.$node.animate({top: this.newTop, left: this.newLeft}, 1);
 };
