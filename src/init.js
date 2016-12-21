@@ -70,13 +70,15 @@ $(document).ready(function() {
     
     var totalWidth = parseInt($('body').css('width'));
     var spacing = totalWidth / ($('.dance-area .dancer').length + 1);
+    var setHeight = parseInt($('body').css('height')) * 0.6;
 
     // Iterate through dancers, applying a width
     $('.dancer').each(function(index) {
       $(this).stop(true, true);
       var fromLeft = (spacing * (index + 1)) + 'px';
+      var fromTop = setHeight + 'px';
       console.log(fromLeft, totalWidth);
-      $(this).animate({'top': '600px', 'left': fromLeft}, 500);
+      $(this).animate({'top': fromTop, 'left': fromLeft}, 500);
     });
 
 
