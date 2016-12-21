@@ -1,8 +1,8 @@
 var makeRussianDancer = function(top, left, timeBetweenSteps) {
+  this.delay = timeBetweenSteps * 3;
+  makeDancer.call(this, top, left, this.delay);
 
-  makeDancer.call(this, top, left, timeBetweenSteps);
 
-  this.delay = timeBetweenSteps;
 
   this.$node.addClass('russian');
   this.$node.attr('src', 'assets/RUSSIA.gif');
@@ -19,4 +19,14 @@ makeRussianDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   // this.$node.toggle();
+  this.rotation();
 };
+
+makeRussianDancer.prototype.rotation = function () {
+  this.$node.rotate({
+    angle: 0,
+    animateTo: 360,
+    callback: this.rotation.bind(this)
+  });
+};
+
