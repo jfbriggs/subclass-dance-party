@@ -12,7 +12,13 @@ describe('carltonDancer', function() {
     expect(carltonDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it('should have a step function that makes its size animate', function() {
+  it('should have a step function that makes its size increase and decrease', function() {
+    sinon.spy(carltonDancer.$node, 'animate');
+    carltonDancer.step();
+    expect(carltonDancer.$node.animate.called).to.be.true;
+  });
+
+  it('should call animate in step cycle', function() {
     sinon.spy(carltonDancer.$node, 'animate');
     carltonDancer.step();
     expect(carltonDancer.$node.animate.called).to.be.true;

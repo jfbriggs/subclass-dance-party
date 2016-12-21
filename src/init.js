@@ -24,10 +24,10 @@ $(document).ready(function() {
 
     var dancer = new dancerMakerFunction(
       $('.dance-area').height() * Math.random() * 0.8 + 45,
-      $('.dance-area').width() * Math.random() * 0.9 + 45,
+      $('.dance-area').width() * Math.random() * 0.8 + 45,
       Math.random() * 1000
     );
-    //window.dancers.push(dancer);
+    window.dancers.push(dancer);
 
     $('.dance-area').append(dancer.$node);
 
@@ -42,7 +42,8 @@ $(document).ready(function() {
       this.originalLeft = $(this).css('left');
       $(this).animate({'top': '0px', 'left': '0px', 'width': '+=1900px'}, 2000);
       //$(this).animate({'top': '0px', 'left': '0px'}, 300);
-      $(this).animate({'top': this.originalTop, 'left': this.originalLeft, 'width': '-=1900px'}, 300);
+      $(this).animate({'top': (parseInt(this.originalTop) > 0) ? this.originalTop : $('.dance-area').height() * Math.random() * 0.8 + 45, 
+        'left': (parseInt(this.originalLeft) > 0) ? this.originalLeft : $('.dance-area').width() * Math.random() * 0.8 + 45, 'width': '-=1900px'}, 300);
     });
 
   });
@@ -59,8 +60,11 @@ $(document).ready(function() {
 
   $('.ghost').on('click', function() {
     $('.dancer').stop(true, true);
-    $('.dancer').animate({opacity: 0}, 3000);
-    $('.dancer').animate({opacity: 1}, 500);
+    $('.dancer').animate({opacity: 0}, 3000, function() { $('.dancer').remove(); });
+    // $('.dancer').animate({opacity: 1}, 500);
+    // setTimeout(function() {
+    //   $('.dancer').remove();
+    // }, 3000);
   });
   
   // Line up code
@@ -69,15 +73,15 @@ $(document).ready(function() {
     // $('.dancer').animate({'top': '600px'}, 500);
     
     var totalWidth = parseInt($('body').css('width'));
-    var spacing = totalWidth / ($('.dance-area .dancer').length + 1);
-    var setHeight = parseInt($('body').css('height')) * 0.6;
+    var spacing = totalWidth / ($('.dance-area .dancer').length + 2);
+    var setHeight = parseInt($('body').css('height')) * 0.5;
 
     // Iterate through dancers, applying a width
     $('.dancer').each(function(index) {
       $(this).stop(true, true);
       var fromLeft = (spacing * (index + 1)) + 'px';
       var fromTop = setHeight + 'px';
-      console.log(fromLeft, totalWidth);
+      // $(this).setPosition(fromTop, fromLeft);
       $(this).animate({'top': fromTop, 'left': fromLeft}, 500);
     });
 
@@ -85,9 +89,13 @@ $(document).ready(function() {
   });
 
   $('.title').on('click', function() {
-    $('audio').play();
-    console.log('Playing the Carlton song!');
+    $('audio').get(0).play();
   });
 
-});
+  setInterval(function() { 
+    $('.dancer').each(function(i) {
+      if (parseInt($(this).css('top')) <= -30) { $(this).remove(); }
+    });
+  }, 3000);
 
+});

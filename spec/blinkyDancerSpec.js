@@ -18,8 +18,13 @@ describe('blinkyDancer', function() {
     expect(blinkyDancer.$node.toggle.called).to.be.true;
   });
 
+  it('should call circleMove', function() {
+    sinon.spy(blinkyDancer, 'circleMove');
+    blinkyDancer.step();
+    expect(blinkyDancer.circleMove.called).to.be.true;
+  });
   describe('dance', function() {
-    it('should call step at least once per second', function() {
+    xit('has a modified timeBetweenSteps', function() {
       sinon.spy(blinkyDancer, 'step');
       expect(blinkyDancer.step.callCount).to.be.equal(0);
       //clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
